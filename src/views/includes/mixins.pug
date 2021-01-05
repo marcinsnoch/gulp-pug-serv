@@ -1,0 +1,30 @@
+//- html head
+mixin head(title='My title', description='Page description')
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    meta(name="description" content=description)
+    title= title
+    link(href="plugins/font-awesome/css/font-awesome.min.css", rel="stylesheet")
+    link(href="css/style.min.css", rel="stylesheet")
+
+//- nav_link
+mixin nav_link(name, href, active=false)
+    li(class=active ? 'active' : '')
+        a(href=href).nav-link= name
+
+//- nav
+mixin nav(items)
+    ul(class!=attributes.class)
+        each i in items
+            +nav_link(i[0],i[1],i[2])
+
+//- navbar
+mixin navbar(items)
+    nav(class!=attributes.class)
+        .container
+            a.navbar-brand(href="/", title="MyWebSite") MyWebSite
+            button(type="button", data-toggle="collapse", data-target="#main-navbar", aria-controls="navbarSupportedContent", aria-expanded="false", aria-label="Toggle navigation").navbar-toggler
+                span.navbar-toggler-icon
+            #main-navbar.collapse.navbar-collapse
+                +nav(items).navbar-nav.ml-auto

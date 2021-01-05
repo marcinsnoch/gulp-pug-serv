@@ -1,0 +1,13 @@
+#toTop {
+    bottom: 10px;
+    cursor: pointer;
+    display: none;
+    height: 48px;
+    opacity: .75;
+    position: fixed;
+    right: 5%;
+    @media (min-width: 1200px) {
+        right: 15%;
+    }
+    width: 48px;
+}

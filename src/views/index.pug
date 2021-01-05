@@ -1,0 +1,80 @@
+include includes/mixins.pug
+doctype html
+html(lang="pl")
+    head
+        +head('Strona główna','Opis strony')
+    body
+        header#page-header
+            - const menuList = []
+            - menuList.push(['Strona głowna', '/', true])
+            - menuList.push(['Oferta', '/offer.html'])
+            - menuList.push(['Realizacje', '#'])
+            - menuList.push(['Contact', '#'])
+            +navbar(menuList).navbar.fixed-top.navbar-expand-lg.navbar-dark.bg-dark
+        main#main-content
+            .container
+                .row
+                    .col-md-8.py-4
+                        h4.mb-3 Billing address
+                        form.needs-validation(novalidate="")
+                            .row
+                                .col-md-6.mb-3
+                                    label(for="firstName") First name
+                                    input#firstName.form-control(type="text" placeholder="" value="" required="" style='background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABHklEQVQ4EaVTO26DQBD1ohQWaS2lg9JybZ+AK7hNwx2oIoVf4UPQ0Lj1FdKktevIpel8AKNUkDcWMxpgSaIEaTVv3sx7uztiTdu2s/98DywOw3Dued4Who/M2aIx5lZV1aEsy0+qiwHELyi+Ytl0PQ69SxAxkWIA4RMRTdNsKE59juMcuZd6xIAFeZ6fGCdJ8kY4y7KAuTRNGd7jyEBXsdOPE3a0QGPsniOnnYMO67LgSQN9T41F2QGrQRRFCwyzoIF2qyBuKKbcOgPXdVeY9rMWgNsjf9ccYesJhk3f5dYT1HX9gR0LLQR30TnjkUEcx2uIuS4RnI+aj6sJR0AM8AaumPaM/rRehyWhXqbFAA9kh3/8/NvHxAYGAsZ/il8IalkCLBfNVAAAAABJRU5ErkJggg=="); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%; cursor: auto;')
+                                    .invalid-feedback
+                                        | Valid first name is required.
+                                .col-md-6.mb-3
+                                    label(for="lastName") Last name
+                                    input#lastName.form-control(type="text" placeholder="" value="" required="")
+                                    .invalid-feedback
+                                        | Valid last name is required.
+                            .mb-3
+                                label(for="username") Username
+                                .input-group
+                                    .input-group-prepend
+                                        span.input-group-text @
+                                    input#username.form-control(type="text" placeholder="Username" required="")
+                                    .invalid-feedback(style="width: 100%;")
+                                        | Your username is required.
+                            .mb-3
+                                label(for="email")
+                                    | Email
+                                    span.text-muted (Optional)
+                                input#email.form-control(type="email" placeholder="you@example.com")
+                                .invalid-feedback
+                                    | Please enter a valid email address for shipping updates.
+                            .mb-3
+                                label(for="address") Address
+                                input#address.form-control(type="text" placeholder="1234 Main St" required="")
+                                .invalid-feedback
+                                    | Please enter your shipping address.
+                            .mb-3
+                                label(for="address2")
+                                    | Address 2
+                                    span.text-muted (Optional)
+                                input#address2.form-control(type="text" placeholder="Apartment or suite")
+                            .row
+                                .col-md-5.mb-3
+                                    label(for="country") Country
+                                    select#country.custom-select.d-block.w-100(required="")
+                                        option(value="") Choose...
+                                        option United States
+                                    .invalid-feedback
+                                        | Please select a valid country.
+                                .col-md-4.mb-3
+                                    label(for="state") State
+                                    select#state.custom-select.d-block.w-100(required="")
+                                        option(value="") Choose...
+                                        option California
+                                    .invalid-feedback
+                                        | Please provide a valid state.
+                                .col-md-3.mb-3
+                                    label(for="zip") Zip
+                                    input#zip.form-control(type="text" placeholder="" required="")
+                                    .invalid-feedback
+                                        | Zip code required.
+                            hr.mb-4
+                            button.btn.btn-primary.btn-lg.btn-block(type="submit") Continue to checkout
+                    .col-md-4.py-4
+                        include partials/sidebar.pug
+        include partials/footer.pug

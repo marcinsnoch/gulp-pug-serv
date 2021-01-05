@@ -1,0 +1,14 @@
+form.mb-4
+    .input-group
+        input.form-control(type="text", placeholder="Szukaj...", value="", name="s", title="Szukaj:")
+        .input-group-append
+            button.btn.btn-outline-secondary(type="submit")
+                i.fa.fa-search
+
+h4.widget-title Menu
+- const sideMenu = []
+- sideMenu.push(['Strona jeden', '/'])
+- sideMenu.push(['Dwa', '#'])
+- sideMenu.push(['Trzy', '#'])
+- sideMenu.push(['Cztery', '#'])
++nav(sideMenu).nav.flex-column
